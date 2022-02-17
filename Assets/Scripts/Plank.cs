@@ -8,6 +8,7 @@ public class Plank : MonoBehaviour
 {
     public GameObject TextAddScore;
     public Color colorChange;
+    public List<Color> listColorChange = new List<Color>();
     Rigidbody rb;
     bool coled = false;
     // Start is called before the first frame update
@@ -32,7 +33,13 @@ public class Plank : MonoBehaviour
     {
         if (!coled && collisionInfo.gameObject.tag == "Plank")
         {
-            GetComponent<MeshRenderer>().material.DOColor(colorChange, 1f);
+            if (listColorChange.Count > 0)
+            {
+                GetComponent<MeshRenderer>().material.DOColor(listColorChange[0], 0.6f).OnComplete(() =>
+                {
+                    GetComponent<MeshRenderer>().material.DOColor(listColorChange[1], 0.6f);
+                });
+            }
             coled = true;
         }
         // rb.angularVelocity *= 50;
