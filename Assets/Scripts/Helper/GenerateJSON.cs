@@ -21,6 +21,7 @@ public class GenerateJSON : MonoBehaviour
             potionData.angle = PlankParent.GetChild(i).transform.eulerAngles.x.ToString() + "," + PlankParent.GetChild(i).transform.eulerAngles.y.ToString() + "," + PlankParent.GetChild(i).transform.eulerAngles.z.ToString();
             potionData.colorBase = PlankParent.GetChild(i).GetComponent<Plank>().colorBase;
             potionData.color = PlankParent.GetChild(i).GetComponent<Plank>().listColorChange;
+            potionData.isRed = PlankParent.GetChild(i).GetComponent<Plank>().isRed;
             if (i == 0)
             {
                 potion += "\"plank\": [";
@@ -102,6 +103,7 @@ public class PotionData
     public string angle;
     public Color colorBase;
     public List<Color> color = new List<Color>();
+    public bool isRed;
 }
 
 [System.Serializable]

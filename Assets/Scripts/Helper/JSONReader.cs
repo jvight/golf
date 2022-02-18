@@ -23,6 +23,7 @@ public class JSONReader : MonoBehaviour
         public string angle;
         public Color colorBase;
         public List<Color> color = new List<Color>();
+        public bool isRed;
     }
 
     [System.Serializable]
@@ -76,8 +77,8 @@ public class JSONReader : MonoBehaviour
             string[] strAngle = levelData.plank[i].angle.Split(char.Parse(","));
             Vector3 angle = new Vector3(float.Parse(strAngle[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngle[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngle[2], CultureInfo.InvariantCulture.NumberFormat));
             PlankParent.GetChild(i).transform.eulerAngles = angle;
-            // PlankParent.GetChild(i).GetComponent<Plank>().colorBase = new Color(levelData.plank[i].colorBase.r, levelData.plank[i].colorBase.g, levelData.plank[i].colorBase.b, levelData.plank[i].colorBase.a);
             PlankParent.GetChild(i).GetComponent<Plank>().SetColor(levelData.plank[i].colorBase, levelData.plank[i].color);
+            PlankParent.GetChild(i).GetComponent<Plank>().isRed = levelData.plank[i].isRed;
         }
         for (int i = 0; i < levelData.flag.Length; i++)
         {
@@ -94,6 +95,7 @@ public class JSONReader : MonoBehaviour
             Vector3 angle = new Vector3(float.Parse(strAngle[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngle[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngle[2], CultureInfo.InvariantCulture.NumberFormat));
             FlagParent.GetChild(i).transform.eulerAngles = angle;
         }
+        Debug.Log(levelData.obj.Length);
         for (int i = 0; i < levelData.obj.Length; i++)
         {
             GameObject obj = Instantiate(prefabObjs[levelData.obj[i].id]);

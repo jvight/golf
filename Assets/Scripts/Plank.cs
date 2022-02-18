@@ -10,7 +10,9 @@ public class Plank : MonoBehaviour
     public Color colorBase;
     public List<Color> listColorChange = new List<Color>();
     Rigidbody rb;
+    public bool isRed = false;
     bool coled = false;
+    public bool poured = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,8 @@ public class Plank : MonoBehaviour
         // rb.centerOfMass = new Vector3(0, 0.25f, 0);
     }
 
-    public void SetColor(Color color, List<Color> listColor) {
+    public void SetColor(Color color, List<Color> listColor)
+    {
         colorBase = color;
         listColorChange = listColor;
         GetComponent<MeshRenderer>().material.color = colorBase;
@@ -47,6 +50,11 @@ public class Plank : MonoBehaviour
                 });
             }
             coled = true;
+            poured = true;
+            GameController.Instance.CheckEnd();
+        }
+        else if (collisionInfo.gameObject.tag == "Ball") {
+            poured = true;
         }
         // rb.angularVelocity *= 50;
     }

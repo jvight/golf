@@ -9,6 +9,7 @@ public class Flag : MonoBehaviour
     public Material yellowFlag;
     public MeshRenderer meshFlag;
     Animation anim;
+    public bool isFly = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +24,11 @@ public class Flag : MonoBehaviour
 
     public void ChangeColor() {
         meshFlag.material = yellowFlag;
-        Debug.Log("???");
     }
 
     void Fly()
     {
+        isFly = true;
         anim.Play("Flag");
         // flag.DOMoveY(flag.position.y + 1f, 1f);
         // flag.GetComponent<MeshRenderer>().material.DOFade(0, 1f);

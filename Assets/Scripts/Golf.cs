@@ -13,6 +13,7 @@ public class Golf : MonoBehaviour
     private Rigidbody rb;
 
     private bool isShoot = false;
+    public int AmountBall = 4;
 
     void Start()
     {
