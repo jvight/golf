@@ -8,6 +8,7 @@ public class GenerateJSON : MonoBehaviour
     List<PotionData> __PotionData = new List<PotionData>();
     public Transform PlankParent;
     public Transform FlagParent;
+    public Transform ObjectParent;
 
     public void SaveIntoJson()
     {
@@ -42,7 +43,15 @@ public class GenerateJSON : MonoBehaviour
             if (i == 0)
             {
                 potion += "\n \"flag\": [";
-                potion += JsonUtility.ToJson(flag) + ",";
+                potion += JsonUtility.ToJson(flag);
+                if (FlagParent.childCount == 1)
+                {
+                    potion += "]";
+                }
+                else
+                {
+                    potion += ",";
+                }
             }
             else if (i == FlagParent.childCount - 1)
             {
@@ -51,6 +60,35 @@ public class GenerateJSON : MonoBehaviour
             else
             {
                 potion += JsonUtility.ToJson(flag) + ",";
+            }
+        }
+        for (int i = 0; i < ObjectParent.childCount; i++)
+        {
+            ObjData obj = new ObjData();
+            obj.pos = ObjectParent.GetChild(i).transform.position.x.ToString() + "," + ObjectParent.GetChild(i).transform.position.y.ToString() + "," + ObjectParent.GetChild(i).transform.position.z.ToString();
+            obj.angle = ObjectParent.GetChild(i).transform.eulerAngles.x.ToString() + "," + ObjectParent.GetChild(i).transform.eulerAngles.y.ToString() + "," + ObjectParent.GetChild(i).transform.eulerAngles.z.ToString();
+            obj.scale = ObjectParent.GetChild(i).transform.localScale.x.ToString() + "," + ObjectParent.GetChild(i).transform.localScale.y.ToString() + "," + ObjectParent.GetChild(i).transform.localScale.z.ToString();
+            obj.id = ObjectParent.GetChild(i).GetComponent<ObjMap>().id;
+            if (i == 0)
+            {
+                potion += "\n \"obj\": [";
+                potion += JsonUtility.ToJson(obj);
+                if (ObjectParent.childCount == 1)
+                {
+                    potion += "]";
+                }
+                else
+                {
+                    potion += ",";
+                }
+            }
+            else if (i == ObjectParent.childCount - 1)
+            {
+                potion += JsonUtility.ToJson(obj) + "]";
+            }
+            else
+            {
+                potion += JsonUtility.ToJson(obj) + ",";
             }
         }
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PotionData.json", potion);
@@ -71,6 +109,15 @@ public class FlagData
 {
     public string pos;
     public string angle;
+}
+
+[System.Serializable]
+public class ObjData
+{
+    public int id;
+    public string pos;
+    public string angle;
+    public string scale;
 }
 
 // [System.Serializable]
