@@ -44,8 +44,12 @@ public class JSONReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Read();
+    }
+    
+    void Read() {
         objectList = JsonUtility.FromJson<ObjectList>(textJSON.text);
-        Level levelData = objectList.level[0];
+        Level levelData = objectList.level[StaticData.level];
         for (int i = 0; i < levelData.plank.Length; i++)
         {
             if (i >= PlankParent.childCount)
@@ -59,10 +63,12 @@ public class JSONReader : MonoBehaviour
             string[] strAngle = levelData.plank[i].angle.Split(char.Parse(","));
             Vector3 angle = new Vector3(float.Parse(strAngle[0], CultureInfo.InvariantCulture), float.Parse(strAngle[1], CultureInfo.InvariantCulture), float.Parse(strAngle[2], CultureInfo.InvariantCulture));
             PlankParent.GetChild(i).transform.eulerAngles = angle;
-            // PlankParent.GetChild(i).GetComponent<Plank>().colorBase = new Color();
+            // PlankParent.GetChild(i).GetComponent<Plank>().colorBase = new Color(levelData.plank[i].colorBase.r, levelData.plank[i].colorBase.g, levelData.plank[i].colorBase.b, levelData.plank[i].colorBase.a);
+            PlankParent.GetChild(i).GetComponent<Plank>().SetColor(levelData.plank[i].colorBase, levelData.plank[i].color);
         }
         for (int i = 0; i < levelData.flag.Length; i++)
         {
+            FlagParent.GetChild(i).gameObject.SetActive(true);
             string[] strPos = levelData.flag[i].pos.Split(char.Parse(","));
             Vector3 pos = new Vector3(float.Parse(strPos[0], CultureInfo.InvariantCulture), float.Parse(strPos[1], CultureInfo.InvariantCulture), float.Parse(strPos[2], CultureInfo.InvariantCulture));
             FlagParent.GetChild(i).transform.position = pos;
@@ -70,27 +76,7 @@ public class JSONReader : MonoBehaviour
             Vector3 angle = new Vector3(float.Parse(strAngle[0], CultureInfo.InvariantCulture), float.Parse(strAngle[1], CultureInfo.InvariantCulture), float.Parse(strAngle[2], CultureInfo.InvariantCulture));
             FlagParent.GetChild(i).transform.eulerAngles = angle;
         }
-        // int i = 0;
-        // StartCoroutine(DelayFunc(0.5f, i));
     }
-
-    // IEnumerator DelayFunc(float time, int i)
-    // {
-    //     yield return new WaitForSeconds(time);
-    //     if (i < objectList.plank.Length)
-    //     {
-    //         string[] strPos = objectList.plank[i].pos.Split(char.Parse(","));
-    //         Vector3 pos = new Vector3(float.Parse(strPos[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPos[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPos[2], CultureInfo.InvariantCulture.NumberFormat));
-    //         text.text = pos.ToString();
-    //         PlankParent.GetChild(i).transform.position = pos;
-    //         string[] strAngle = objectList.plank[i].angle.Split(char.Parse(","));
-    //         Vector3 angle = new Vector3(float.Parse(strAngle[0]), float.Parse(strAngle[1]), float.Parse(strAngle[2]));
-    //         PlankParent.GetChild(i).transform.eulerAngles = angle;
-    //         i++;
-    //         StartCoroutine(DelayFunc(0.5f, i));
-    //     }
-    // }
-
     // Update is called once per frame
     void Update()
     {

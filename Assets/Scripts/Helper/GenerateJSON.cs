@@ -36,11 +36,6 @@ public class GenerateJSON : MonoBehaviour
         }
         for (int i = 0; i < FlagParent.childCount; i++)
         {
-            // if (!firtFlag)
-            // {
-            //     potion += "\n \"flag\": [";
-            //     firtFlag = true;
-            // }
             FlagData flag = new FlagData();
             flag.pos = FlagParent.GetChild(i).transform.position.x.ToString() + "," + FlagParent.GetChild(i).transform.position.y.ToString() + "," + FlagParent.GetChild(i).transform.position.z.ToString();
             flag.angle = FlagParent.GetChild(i).transform.eulerAngles.x.ToString() + "," + FlagParent.GetChild(i).transform.eulerAngles.y.ToString() + "," + FlagParent.GetChild(i).transform.eulerAngles.z.ToString();

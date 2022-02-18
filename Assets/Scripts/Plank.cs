@@ -15,8 +15,13 @@ public class Plank : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        GetComponent<MeshRenderer>().material.color = colorBase;
         // rb.centerOfMass = new Vector3(0, 0.25f, 0);
+    }
+
+    public void SetColor(Color color, List<Color> listColor) {
+        colorBase = color;
+        listColorChange = listColor;
+        GetComponent<MeshRenderer>().material.color = colorBase;
     }
 
     // Update is called once per frame
