@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Plank : MonoBehaviour
 {
     public GameObject TextAddScore;
-    public Color colorChange;
+    public Color colorBase;
     public List<Color> listColorChange = new List<Color>();
     Rigidbody rb;
     bool coled = false;
@@ -15,6 +15,7 @@ public class Plank : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GetComponent<MeshRenderer>().material.color = colorBase;
         // rb.centerOfMass = new Vector3(0, 0.25f, 0);
     }
 
