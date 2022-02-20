@@ -110,6 +110,7 @@ public class JSONReader : MonoBehaviour
             Vector3 scale = new Vector3(float.Parse(strScale[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[2], CultureInfo.InvariantCulture.NumberFormat));
             obj.transform.localScale = scale;
         }
+        GameController.Instance.CreateDone();
     }
     // Update is called once per frame
     void Update()

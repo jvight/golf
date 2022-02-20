@@ -18,12 +18,19 @@ public class Character : MonoBehaviour
     public void Hit()
     {
         anim.SetBool("IsDrive", true);
-        StartCoroutine(DelayFunc(() => {
-               anim.SetBool("IsDrive", false);
+        StartCoroutine(DelayFunc(() =>
+        {
+            anim.SetBool("IsDrive", false);
         }, 4f));
     }
 
-    public void SetTimeAnim(float time) {
+    public void Idle()
+    {
+        anim.SetBool("IsDrive", false);
+    }
+
+    public void SetTimeAnim(float time)
+    {
         anim.speed = time;
     }
     IEnumerator DelayFunc(Action call, float time)

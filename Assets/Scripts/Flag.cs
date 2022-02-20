@@ -28,8 +28,10 @@ public class Flag : MonoBehaviour
 
     void Fly()
     {
+        this.GetComponent<BoxCollider>().enabled = false;
         isFly = true;
         anim.Play("Flag");
+        GameController.Instance.UpdateFlagFly();
         // flag.DOMoveY(flag.position.y + 1f, 1f);
         // flag.GetComponent<MeshRenderer>().material.DOFade(0, 1f);
     }

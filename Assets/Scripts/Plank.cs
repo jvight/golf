@@ -51,7 +51,7 @@ public class Plank : MonoBehaviour
             }
             coled = true;
             poured = true;
-            GameController.Instance.CheckEnd();
+            GameController.Instance.PourDone();
         }
         else if (collisionInfo.gameObject.tag == "Ball") {
             poured = true;
