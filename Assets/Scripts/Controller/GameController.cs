@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
                 GameLose();
             }
         }
-        Debug.Log(flagDone);
+        Debug.Log(whitePlank.Count);
         Debug.Log(whiteDone);
     }
 
