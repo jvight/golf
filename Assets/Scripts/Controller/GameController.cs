@@ -56,10 +56,19 @@ public class GameController : MonoBehaviour
         StartCoroutine(DelayFunc(() =>
         {   
             character.Idle();
-            Time.timeScale = 1;
+            // Time.timeScale = 1;
+            ChangeTime(1);
             golf.ReBack();
             CheckEnd();
-        }, 1f));
+        }, 2f));
+    }
+
+    public void ChangeTime(float time) {
+        Time.timeScale = time;
+        for (int i = 0; i < ObjParent.childCount; i++)
+        {
+            ObjParent.GetChild(i).GetComponent<ObjMap>().Change();
+        }
     }
 
     public void CheckEnd()
@@ -80,6 +89,8 @@ public class GameController : MonoBehaviour
         });
         bool whiteDone = whitePlank.TrueForAll(plank => !plank.isRed && plank.poured);
         bool flagDone = listFlag.TrueForAll(flag => flag.isFly);
+        Debug.Log(whiteDone);
+        Debug.Log(flagDone);
         if (whiteDone && flagDone)
         {
             GameWin();

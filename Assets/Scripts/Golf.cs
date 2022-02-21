@@ -67,7 +67,8 @@ public class Golf : MonoBehaviour
         if (isShoot)
             return;
         character.SetTimeAnim(0.5f);
-        Time.timeScale = 2;
+        // Time.timeScale = 2;
+        GameController.Instance.ChangeTime(2);
         character.Hit();
         StartCoroutine(DelayFunc(() =>
         {
@@ -85,7 +86,8 @@ public class Golf : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }, 0.03f));
-            Time.timeScale = 2.5f;
+            // Time.timeScale = 2.5f;
+            GameController.Instance.ChangeTime(2.5f);
             // character.SetTimeAnim(0.5f);
         }
         if (isShoot)
