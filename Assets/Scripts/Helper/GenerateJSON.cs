@@ -121,10 +121,3 @@ public class ObjData
     public string angle;
     public string scale;
 }
-
-// [System.Serializable]
-// public class Effect
-// {
-//     public string name;
-//     public string desc;
-// }

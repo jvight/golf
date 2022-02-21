@@ -39,6 +39,8 @@ public class JSONReader : MonoBehaviour
         public string pos;
         public string angle;
         public string scale;
+        public bool isMove;
+        public string posEnd;
     }
 
     [System.Serializable]
@@ -109,6 +111,13 @@ public class JSONReader : MonoBehaviour
             string[] strScale = levelData.obj[i].scale.Split(char.Parse(","));
             Vector3 scale = new Vector3(float.Parse(strScale[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[2], CultureInfo.InvariantCulture.NumberFormat));
             obj.transform.localScale = scale;
+            obj.GetComponent<ObjMap>().isMove = levelData.obj[i].isMove;
+            if (levelData.obj[i].isMove)
+            {
+                string[] strPosEnd = levelData.obj[i].posEnd.Split(char.Parse(","));
+                Vector3 posEnd = new Vector3(float.Parse(strPosEnd[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[2], CultureInfo.InvariantCulture.NumberFormat));
+                obj.GetComponent<ObjMap>().posEnd = posEnd;
+            }
         }
         GameController.Instance.CreateDone();
     }

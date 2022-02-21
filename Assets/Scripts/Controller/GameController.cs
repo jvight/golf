@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         {
             listFlag.Add(FlagParent.GetChild(i).GetComponent<Flag>());
         }
-        uiController.UpdateAmountFlag(listFlag.Count);
+        // uiController.UpdateAmountFlag(listFlag.Count);
     }
 
     public void PlayGolf()

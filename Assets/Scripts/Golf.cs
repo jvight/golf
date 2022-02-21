@@ -49,7 +49,7 @@ public class Golf : MonoBehaviour
             {
                 mouseReleasePos = touch.position;
                 Vector3 force = mousePressDownPos - mouseReleasePos;
-                Vector3 forceV = new Vector3(force.x, Math.Abs(force.y), Math.Abs(force.y)) * forceMultiplier;
+                Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 100), Math.Abs(force.y)) * forceMultiplier;
                 drawTrajectory.UpdateTrajectory(forceV, rb, transform.position);
             }
             else if (touch.phase == TouchPhase.Ended)
@@ -61,17 +61,19 @@ public class Golf : MonoBehaviour
         }
     }
 
-    private float forceMultiplier = 5f;
+    private float forceMultiplier = 1;
     void Shoot(Vector3 Force)
     {
         if (isShoot)
             return;
+        character.SetTimeAnim(0.5f);
+        Time.timeScale = 2;
         character.Hit();
         StartCoroutine(DelayFunc(() =>
         {
             GameController.Instance.PlayGolf();
-            rb.AddForce(new Vector3(Force.x, Math.Abs(Force.y), Math.Abs(Force.y)) * forceMultiplier);
-        }, 0.9f));
+            rb.AddForce(new Vector3(Force.x, Math.Abs(Force.y + 100), Math.Abs(Force.y)) * forceMultiplier);
+        }, 0.9f * Time.timeScale));
         isShoot = true;
     }
 
@@ -83,8 +85,8 @@ public class Golf : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }, 0.03f));
-            Time.timeScale = 2;
-            character.SetTimeAnim(0.5f);
+            Time.timeScale = 2.5f;
+            // character.SetTimeAnim(0.5f);
         }
         if (isShoot)
         {

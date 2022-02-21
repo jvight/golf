@@ -11,7 +11,7 @@ public class DrawTrajectory : MonoBehaviour
     [SerializeField]
     public Transform dotParent;
     [Range(3, 30)]
-    private int _lineSegmentCount = 20;
+    private int _lineSegmentCount = 12;
     private List<Vector3> _linePoint = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class DrawTrajectory : MonoBehaviour
             GameObject dot = Instantiate(ballPrefab);
             dot.transform.parent = dotParent;
             dot.transform.localScale -= new Vector3(scl / 50, scl / 50, scl / 50);
-            Debug.Log(scl / 50);
+            dot.SetActive(false);
         }
     }
 
@@ -78,11 +78,15 @@ public class DrawTrajectory : MonoBehaviour
         GameObject dot = Instantiate(ballPrefab);
         dot.transform.parent = dotParent;
         dot.transform.position = pos;
-        dot.transform.localScale -= new Vector3(scl / 100, scl / 100, scl / 100);
+        dot.transform.localScale -= new Vector3(scl / 150, scl / 150, scl / 150);
     }
 
     public void HideLine()
     {
+        for (int i = 0; i < dotParent.childCount; i++)
+        {
+            dotParent.GetChild(i).gameObject.SetActive(false);
+        }
         _lineRenderer.positionCount = 0;
     }
 

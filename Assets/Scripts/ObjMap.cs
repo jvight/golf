@@ -6,6 +6,8 @@ public class ObjMap : MonoBehaviour
 {
     [SerializeField]
     public int id;
+    public bool isMove;
+    public Vector3 posEnd;
     // Start is called before the first frame update
     void Start()
     {

@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     public Image blackScreen;
     void Start()
     {
+        UpdateFlagFly(StaticData.level);
     }
 
     public void SetAmountBall(int amount)
@@ -35,6 +36,7 @@ public class UIController : MonoBehaviour
     Tween fillTween;
     public void UpdateFlagFly(int amount)
     {
+        UpdateAmountFlag(amount);
         DOTween.Kill(fillTween);
         fillTween = progressFlag.DOFillAmount(amount * 0.2f, 1f);
     }
