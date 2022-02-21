@@ -91,8 +91,6 @@ public class GameController : MonoBehaviour
                 GameLose();
             }
         }
-        Debug.Log(whitePlank.Count);
-        Debug.Log(whiteDone);
     }
 
     public void UpdateFlagFly()
