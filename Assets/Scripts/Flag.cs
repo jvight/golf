@@ -8,6 +8,7 @@ public class Flag : MonoBehaviour
     // public Transform flag;
     public Material yellowFlag;
     public MeshRenderer meshFlag;
+    public GameObject particle;
     Animation anim;
     public bool isFly = false;
     // Start is called before the first frame update
@@ -22,12 +23,16 @@ public class Flag : MonoBehaviour
 
     }
 
-    public void ChangeColor() {
+    public void ChangeColor()
+    {
         meshFlag.material = yellowFlag;
     }
 
     void Fly()
     {
+        var main = particle.GetComponent<ParticleSystem>().main;
+        main.simulationSpeed = 0.5f;
+        particle.SetActive(true);
         this.GetComponent<BoxCollider>().enabled = false;
         isFly = true;
         anim.Play("Flag");
