@@ -117,6 +117,7 @@ public class JSONReader : MonoBehaviour
                 string[] strPosEnd = levelData.obj[i].posEnd.Split(char.Parse(","));
                 Vector3 posEnd = new Vector3(float.Parse(strPosEnd[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[2], CultureInfo.InvariantCulture.NumberFormat));
                 obj.GetComponent<ObjMap>().posEnd = posEnd;
+                 obj.GetComponent<ObjMap>().Move();
             }
         }
         GameController.Instance.CreateDone();

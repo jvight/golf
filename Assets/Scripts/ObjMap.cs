@@ -12,10 +12,10 @@ public class ObjMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (isMove)
-        {
-            Move();
-        }
+        // if (isMove)
+        // {
+        //     Move();
+        // }
     }
 
     Sequence seq;

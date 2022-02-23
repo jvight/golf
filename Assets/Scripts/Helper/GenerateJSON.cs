@@ -76,6 +76,8 @@ public class GenerateJSON : MonoBehaviour
                 obj.angle = ObjectParent.GetChild(i).transform.eulerAngles.x.ToString() + "," + ObjectParent.GetChild(i).transform.eulerAngles.y.ToString() + "," + ObjectParent.GetChild(i).transform.eulerAngles.z.ToString();
                 obj.scale = ObjectParent.GetChild(i).transform.localScale.x.ToString() + "," + ObjectParent.GetChild(i).transform.localScale.y.ToString() + "," + ObjectParent.GetChild(i).transform.localScale.z.ToString();
                 obj.id = ObjectParent.GetChild(i).GetComponent<ObjMap>().id;
+                obj.isMove = ObjectParent.GetChild(i).GetComponent<ObjMap>().isMove;
+                obj.posEnd = ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.z.ToString();
                 if (i == 0)
                 {
                     potion += "\n \"obj\": [";
@@ -127,4 +129,6 @@ public class ObjData
     public string pos;
     public string angle;
     public string scale;
+    public bool isMove;
+    public string posEnd;
 }

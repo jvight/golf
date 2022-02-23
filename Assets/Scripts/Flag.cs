@@ -42,6 +42,9 @@ public class Flag : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        // if (other.gameObject.tag == "Plank")
+        // {
+        // }
         Fly();
     }
 }
