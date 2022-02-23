@@ -8,6 +8,7 @@ public class Plank : MonoBehaviour
 {
     public GameObject TextAddScore;
     public Color colorBase;
+    [SerializeField]
     public List<Color> listColorChange = new List<Color>();
     Rigidbody rb;
     public bool isRed = false;
@@ -18,6 +19,7 @@ public class Plank : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         // rb.centerOfMass = new Vector3(0, 0.25f, 0);
+        GetComponent<MeshRenderer>().material.color = colorBase;
     }
 
     public void SetColor(Color color, List<Color> listColor)
@@ -53,7 +55,8 @@ public class Plank : MonoBehaviour
             poured = true;
             GameController.Instance.PourDone();
         }
-        else if (collisionInfo.gameObject.tag == "Ball") {
+        else if (collisionInfo.gameObject.tag == "Ball")
+        {
             poured = true;
         }
         // rb.angularVelocity *= 50;
