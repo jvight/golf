@@ -43,7 +43,6 @@ public class DrawTrajectory : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(startingPoint, -MovementVector, out hit, MovementVector.magnitude))
             {
-                Debug.Log(hit.collider.tag);
                 for (int j = 0; j < dotParent.childCount; j++)
                 {
                     if (j >= i)

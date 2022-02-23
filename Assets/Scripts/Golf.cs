@@ -15,6 +15,7 @@ public class Golf : MonoBehaviour
     private bool isShoot = false;
     Vector3 oldPos;
     Vector3 oldAngle;
+    bool isTouch = false;
 
     void Start()
     {
@@ -38,27 +39,49 @@ public class Golf : MonoBehaviour
     void Update()
     {
         if (isShoot || GameController.Instance.AmountBall <= 0 || GameController.Instance.GameDone) { return; }
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                mousePressDownPos = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved)
-            {
-                mouseReleasePos = touch.position;
-                Vector3 force = mousePressDownPos - mouseReleasePos;
-                Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 200), Math.Abs(force.y + 100)) * forceMultiplier;
-                drawTrajectory.UpdateTrajectory(forceV, rb, transform.position);
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                drawTrajectory.HideLine();
-                mouseReleasePos = touch.position;
-                Shoot(mousePressDownPos - mouseReleasePos);
-            }
+            mousePressDownPos = Input.mousePosition;
+            isTouch = true;
+            Debug.Log("touch start");
         }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("touch end");
+            isTouch = false;
+            drawTrajectory.HideLine();
+            mouseReleasePos = Input.mousePosition;
+            Shoot(mousePressDownPos - mouseReleasePos);
+        }
+        if (isTouch)
+        {
+            Debug.Log("touch move");
+            mouseReleasePos = Input.mousePosition;
+            Vector3 force = mousePressDownPos - mouseReleasePos;
+            Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 200), Math.Abs(force.y + 100)) * forceMultiplier;
+            drawTrajectory.UpdateTrajectory(forceV, rb, transform.position);
+        }
+        // if (Input.touchCount > 0)
+        // {
+        //     Touch touch = Input.GetTouch(0);
+        //     if (touch.phase == TouchPhase.Began)
+        //     {
+        //         mousePressDownPos = touch.position;
+        //     }
+        //     else if (touch.phase == TouchPhase.Moved)
+        //     {
+        //         mouseReleasePos = touch.position;
+        //         Vector3 force = mousePressDownPos - mouseReleasePos;
+        //         Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 200), Math.Abs(force.y + 100)) * forceMultiplier;
+        //         drawTrajectory.UpdateTrajectory(forceV, rb, transform.position);
+        //     }
+        //     else if (touch.phase == TouchPhase.Ended)
+        //     {
+        //         drawTrajectory.HideLine();
+        //         mouseReleasePos = touch.position;
+        //         Shoot(mousePressDownPos - mouseReleasePos);
+        //     }
+        // }
     }
 
     private float forceMultiplier = 0.5f;
