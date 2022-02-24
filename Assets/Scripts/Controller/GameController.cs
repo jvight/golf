@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public Golf golf;
     public int AmountBall = 4;
     public bool GameDone = false;
+    public JSONReader jsonReader;
     void Awake()
     {
         Instance = this;
@@ -54,7 +55,7 @@ public class GameController : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(DelayFunc(() =>
-        {   
+        {
             character.Idle();
             // Time.timeScale = 1;
             ChangeTime(1);
@@ -63,7 +64,8 @@ public class GameController : MonoBehaviour
         }, 2f));
     }
 
-    public void ChangeTime(float time) {
+    public void ChangeTime(float time)
+    {
         Time.timeScale = time;
         for (int i = 0; i < ObjParent.childCount; i++)
         {
@@ -76,8 +78,21 @@ public class GameController : MonoBehaviour
         Plank plankRed = listPlank.Find(plank => plank.isRed && plank.poured);
         if (plankRed != null)
         {
-            GameLose();
+            // GameLose();
+            StartCoroutine(DelayFunc(() =>
+           {
+               if (AmountBall > 0)
+               {
+                   jsonReader.Read();
+
+               }
+               else{
+                   GameLose();
+               }
+           }, 0.5f));
+
             return;
+
         }
         List<Plank> whitePlank = new List<Plank>();
         listPlank.ForEach(plank =>

@@ -7,6 +7,7 @@ public class Flag : MonoBehaviour
 {
     // public Transform flag;
     public Material yellowFlag;
+    public Material redFlag;
     public MeshRenderer meshFlag;
     public GameObject particle;
     Animation anim;
@@ -46,5 +47,11 @@ public class Flag : MonoBehaviour
         // {
         // }
         Fly();
+    }
+    public void ResetFlag(){
+        isFly=false;
+        meshFlag.material=redFlag;
+        particle.SetActive(false);
+        this.GetComponent<BoxCollider>().enabled = true;
     }
 }

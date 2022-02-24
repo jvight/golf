@@ -43,11 +43,11 @@ public class Golf : MonoBehaviour
         {
             mousePressDownPos = Input.mousePosition;
             isTouch = true;
-            Debug.Log("touch start");
+            // Debug.Log("touch start");
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("touch end");
+            // Debug.Log("touch end");
             isTouch = false;
             drawTrajectory.HideLine();
             mouseReleasePos = Input.mousePosition;
@@ -55,7 +55,7 @@ public class Golf : MonoBehaviour
         }
         if (isTouch)
         {
-            Debug.Log("touch move");
+            // Debug.Log("touch move");
             mouseReleasePos = Input.mousePosition;
             Vector3 force = mousePressDownPos - mouseReleasePos;
             Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 200), Math.Abs(force.y + 100)) * forceMultiplier;
@@ -115,6 +115,14 @@ public class Golf : MonoBehaviour
         }
         if (isShoot)
         {
+            Debug.Log("iscollided");
+            GameController.Instance.PourDone();
+        }
+    }
+    void OnTriggerEnter(Collider other){
+          if (isShoot)
+        {
+            Debug.Log("iscollided");
             GameController.Instance.PourDone();
         }
     }
