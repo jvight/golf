@@ -62,7 +62,7 @@ public class JSONReader : MonoBehaviour
         Read();
     }
 
-    void Read()
+    public void Read()
     {
         objectList = JsonUtility.FromJson<ObjectList>(textJSON.text);
         Level levelData = objectList.level[StaticData.level];
@@ -81,6 +81,7 @@ public class JSONReader : MonoBehaviour
             PlankParent.GetChild(i).transform.eulerAngles = angle;
             PlankParent.GetChild(i).GetComponent<Plank>().SetColor(levelData.plank[i].colorBase, levelData.plank[i].color);
             PlankParent.GetChild(i).GetComponent<Plank>().isRed = levelData.plank[i].isRed;
+            PlankParent.GetChild(i).GetComponent<Plank>().ResetPlank();
         }
         for (int i = 0; i < levelData.flag.Length; i++)
         {
@@ -96,6 +97,7 @@ public class JSONReader : MonoBehaviour
             string[] strAngle = levelData.flag[i].angle.Split(char.Parse(","));
             Vector3 angle = new Vector3(float.Parse(strAngle[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngle[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngle[2], CultureInfo.InvariantCulture.NumberFormat));
             FlagParent.GetChild(i).transform.eulerAngles = angle;
+            FlagParent.GetChild(i).GetComponent<Flag>().ResetFlag();
         }
         Debug.Log(levelData.obj.Length);
         for (int i = 0; i < levelData.obj.Length; i++)

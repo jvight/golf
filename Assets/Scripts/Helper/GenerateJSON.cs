@@ -102,6 +102,7 @@ public class GenerateJSON : MonoBehaviour
             }
         }
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PotionData.json", potion);
+        Debug.Log(potion);
     }
 }
 

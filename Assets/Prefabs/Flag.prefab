@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yellowFlag: {fileID: 2100000, guid: 589fcd42d55074e4fbd3b0e491655101, type: 2}
+  redFlag: {fileID: 2100000, guid: 623d7a653faa81b4bb84f98805b5c6b3, type: 2}
   meshFlag: {fileID: 4203543217602832398}
   particle: {fileID: 8024888223273590058}
   isFly: 0
