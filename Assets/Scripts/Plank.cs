@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class Plank : MonoBehaviour
 {
-    public GameObject TextAddScore;
     public Color colorBase;
     [SerializeField]
     public List<Color> listColorChange = new List<Color>();
@@ -19,7 +18,7 @@ public class Plank : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         // rb.centerOfMass = new Vector3(0, 0.25f, 0);
-        GetComponent<MeshRenderer>().material.color = colorBase;
+        // GetComponent<MeshRenderer>().material.color = colorBase;
     }
 
     public void SetColor(Color color, List<Color> listColor)
@@ -32,12 +31,6 @@ public class Plank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-
-    public void OnCreateAddScore()
-    {
-        GameObject text = Instantiate(TextAddScore);
-        text.transform.parent = transform;
     }
 
     void OnCollisionEnter(Collision collisionInfo)
