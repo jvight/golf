@@ -51,14 +51,19 @@ public class Golf : MonoBehaviour
             isTouch = false;
             drawTrajectory.HideLine();
             mouseReleasePos = Input.mousePosition;
-            Shoot(mousePressDownPos - mouseReleasePos);
+            var f=Vector3.ClampMagnitude(mousePressDownPos - mouseReleasePos,800);
+            Shoot(f);
         }
         if (isTouch)
         {
             // Debug.Log("touch move");
             mouseReleasePos = Input.mousePosition;
             Vector3 force = mousePressDownPos - mouseReleasePos;
+            force = Vector3.ClampMagnitude(force, 800);
             Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 200), Math.Abs(force.y + 100)) * forceMultiplier;
+            Debug.Log(force.magnitude);
+            
+
             drawTrajectory.UpdateTrajectory(forceV, rb, transform.position);
         }
         // if (Input.touchCount > 0)
