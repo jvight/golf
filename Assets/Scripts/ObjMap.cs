@@ -6,8 +6,10 @@ using DG.Tweening;
 public class ObjMap : MonoBehaviour
 {
     [SerializeField]
+    public Transform xMark;
     public int id;
     public bool isMove;
+    public bool isX;
     public Vector3 posEnd;
     // Start is called before the first frame update
     void Start()

@@ -78,6 +78,12 @@ public class GenerateJSON : MonoBehaviour
                 obj.id = ObjectParent.GetChild(i).GetComponent<ObjMap>().id;
                 obj.isMove = ObjectParent.GetChild(i).GetComponent<ObjMap>().isMove;
                 obj.posEnd = ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.z.ToString();
+                if(ObjectParent.GetChild(i).GetComponent<ObjMap>().isX){
+                    obj.isX=true;
+                    obj.xPos=ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.position.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.position.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.position.z.ToString();
+                    obj.xAngle=ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.eulerAngles.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.eulerAngles.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.eulerAngles.z.ToString();
+                    obj.xScale=ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.localScale.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.localScale.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.localScale.z.ToString();
+                }
                 if (i == 0)
                 {
                     potion += "\n \"obj\": [";
@@ -132,4 +138,9 @@ public class ObjData
     public string scale;
     public bool isMove;
     public string posEnd;
+    public bool isX;
+
+    public string xPos;
+    public string xAngle;
+    public string xScale;
 }

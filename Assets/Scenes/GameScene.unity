@@ -428,7 +428,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.910208, y: 0.5367239, z: 23.661146}
-  m_Center: {x: -0.33420944, y: 0.041736573, z: 0.1881361}
+  m_Center: {x: -0.33420944, y: 0.041736573, z: -0.26}
 --- !u!1 &129526748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,7 +3320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1957029492
 RectTransform:
   m_ObjectHideFlags: 0

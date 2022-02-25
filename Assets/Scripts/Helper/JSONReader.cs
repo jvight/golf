@@ -41,6 +41,11 @@ public class JSONReader : MonoBehaviour
         public string scale;
         public bool isMove;
         public string posEnd;
+        public bool isX;
+
+        public string xPos;
+        public string xAngle;
+        public string xScale;
     }
 
     [System.Serializable]
@@ -114,12 +119,26 @@ public class JSONReader : MonoBehaviour
             Vector3 scale = new Vector3(float.Parse(strScale[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[2], CultureInfo.InvariantCulture.NumberFormat));
             obj.transform.localScale = scale;
             obj.GetComponent<ObjMap>().isMove = levelData.obj[i].isMove;
+            obj.GetComponent<ObjMap>().isX = levelData.obj[i].isX;
+            if (obj.GetComponent<ObjMap>().isX)
+            {
+                obj.GetComponent<ObjMap>().xMark.gameObject.SetActive(true);
+                string[] strPosX = levelData.obj[i].xPos.Split(char.Parse(","));
+                Vector3 xPos = new Vector3(float.Parse(strPosX[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosX[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosX[2], CultureInfo.InvariantCulture.NumberFormat));
+                obj.GetComponent<ObjMap>().xMark.position = xPos;
+                string[] strAngleX = levelData.obj[i].xAngle.Split(char.Parse(","));
+                Vector3 xAngle = new Vector3(float.Parse(strAngleX[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngleX[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngleX[2], CultureInfo.InvariantCulture.NumberFormat));
+                obj.GetComponent<ObjMap>().xMark.eulerAngles = xAngle;
+                string[] strScaleX = levelData.obj[i].xScale.Split(char.Parse(","));
+                Vector3 xScale = new Vector3(float.Parse(strScaleX[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScaleX[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScaleX[2], CultureInfo.InvariantCulture.NumberFormat));
+                obj.GetComponent<ObjMap>().xMark.localScale = xScale;
+            }
             if (levelData.obj[i].isMove)
             {
                 string[] strPosEnd = levelData.obj[i].posEnd.Split(char.Parse(","));
                 Vector3 posEnd = new Vector3(float.Parse(strPosEnd[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[2], CultureInfo.InvariantCulture.NumberFormat));
                 obj.GetComponent<ObjMap>().posEnd = posEnd;
-                 obj.GetComponent<ObjMap>().Move();
+                obj.GetComponent<ObjMap>().Move();
             }
         }
         GameController.Instance.CreateDone();
