@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class StaticData : MonoBehaviour
 {
-       public static int level = 8;
+       public static int level = 9;
 }
