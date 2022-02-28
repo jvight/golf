@@ -149,7 +149,7 @@ public class GameController : MonoBehaviour
             StartCoroutine(DelayFunc(() =>
             {
                 StaticData.level += 1;
-                if (StaticData.level >= 10)
+                if (StaticData.level >= 15)
                 {
                     StaticData.level = 0;
                 }
