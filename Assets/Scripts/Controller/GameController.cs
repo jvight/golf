@@ -26,6 +26,13 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
+        int numOff = PlayerPrefs.GetInt("RateOff", 0);
+        Debug.Log(numOff);
+        if (StaticData.level == 3 && numOff == 0 || StaticData.level == 10 && numOff == 1 || StaticData.level == 15 && numOff == 2)
+        {
+            IARManager.Instance.ShowBox();
+            uiController.blackScreen.gameObject.SetActive(true);
+        }
         uiController.SetAmountBall(AmountBall);
         Time.timeScale = 1;
         // Plank plankRed = listPlank.Find(plank => plank.tag == "Plank");
@@ -86,7 +93,8 @@ public class GameController : MonoBehaviour
                    jsonReader.Read();
 
                }
-               else{
+               else
+               {
                    GameLose();
                }
            }, 0.5f));

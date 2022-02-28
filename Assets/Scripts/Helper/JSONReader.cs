@@ -104,7 +104,6 @@ public class JSONReader : MonoBehaviour
             FlagParent.GetChild(i).transform.eulerAngles = angle;
             FlagParent.GetChild(i).GetComponent<Flag>().ResetFlag();
         }
-        Debug.Log(levelData.obj.Length);
         for (int i = 0; i < levelData.obj.Length; i++)
         {
             GameObject obj = Instantiate(prefabObjs[levelData.obj[i].id]);

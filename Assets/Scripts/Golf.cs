@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -36,8 +38,18 @@ public class Golf : MonoBehaviour
         isShoot = false;
     }
 
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
     void Update()
     {
+        if (IsPointerOverUIObject()) { return; }
         if (isShoot || GameController.Instance.AmountBall <= 0 || GameController.Instance.GameDone) { return; }
         if (Input.GetMouseButtonDown(0))
         {
@@ -51,7 +63,7 @@ public class Golf : MonoBehaviour
             isTouch = false;
             drawTrajectory.HideLine();
             mouseReleasePos = Input.mousePosition;
-            var f=Vector3.ClampMagnitude(mousePressDownPos - mouseReleasePos,800);
+            var f = Vector3.ClampMagnitude(mousePressDownPos - mouseReleasePos, 800);
             Shoot(f);
         }
         if (isTouch)
@@ -62,7 +74,7 @@ public class Golf : MonoBehaviour
             force = Vector3.ClampMagnitude(force, 800);
             Vector3 forceV = new Vector3(force.x, Math.Abs(force.y + 200), Math.Abs(force.y + 100)) * forceMultiplier;
             Debug.Log(force.magnitude);
-            
+
 
             drawTrajectory.UpdateTrajectory(forceV, rb, transform.position);
         }
@@ -88,6 +100,7 @@ public class Golf : MonoBehaviour
         //     }
         // }
     }
+
 
     private float forceMultiplier = 0.5f;
     void Shoot(Vector3 Force)
@@ -124,8 +137,9 @@ public class Golf : MonoBehaviour
             GameController.Instance.PourDone();
         }
     }
-    void OnTriggerEnter(Collider other){
-          if (isShoot)
+    void OnTriggerEnter(Collider other)
+    {
+        if (isShoot)
         {
             Debug.Log("iscollided");
             GameController.Instance.PourDone();
