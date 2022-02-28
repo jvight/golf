@@ -46,8 +46,8 @@ public class RateBox : MonoBehaviour
     void SendEmail()
     {
         string email = "feedback@cscmobi.com";
-        string subject = MyEscapeURL("My Subject");
-        string body = MyEscapeURL("My Body\r\nFull of non-escaped chars");
+        string subject = MyEscapeURL("Feedback");
+        string body = MyEscapeURL("Your feedback");
         Application.OpenURL("mailto:" + email + "?subject=" + subject + "&body=" + body);
     }
     string MyEscapeURL(string url)
