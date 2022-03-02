@@ -46,6 +46,7 @@ public class UIController : MonoBehaviour
     {
         blackScreen.gameObject.SetActive(true);
         blackScreen.DOFade(0.7f, 1);
+        textEnd.gameObject.SetActive(true);
         textEnd.DOFade(0.7f, 1);
         textEnd.text = "VICTORY";
     }
@@ -54,7 +55,9 @@ public class UIController : MonoBehaviour
     {
         blackScreen.gameObject.SetActive(true);
         blackScreen.DOFade(0.7f, 1);
-        textEnd.DOFade(0.7f, 1);
+        textEnd.DOFade(0.7f, 1).OnComplete(() => {
+             textEnd.gameObject.SetActive(false);
+        });
         textEnd.text = "DEFEATED";
     }
 
