@@ -18,6 +18,7 @@ public class Golf : MonoBehaviour
     Vector3 oldPos;
     Vector3 oldAngle;
     bool isTouch = false;
+    bool touchUI = false;
 
     void Start()
     {
@@ -49,10 +50,15 @@ public class Golf : MonoBehaviour
 
     void Update()
     {
-        if (IsPointerOverUIObject()) { return; }
+        if (IsPointerOverUIObject())
+        {
+            touchUI = true;
+            return;
+        }
         if (isShoot || GameController.Instance.AmountBall <= 0 || GameController.Instance.GameDone) { return; }
         if (Input.GetMouseButtonDown(0))
         {
+            touchUI = false;
             mousePressDownPos = Input.mousePosition;
             isTouch = true;
             // Debug.Log("touch start");
@@ -60,6 +66,7 @@ public class Golf : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             // Debug.Log("touch end");
+            if (touchUI) { return; }
             isTouch = false;
             drawTrajectory.HideLine();
             mouseReleasePos = Input.mousePosition;
@@ -68,6 +75,7 @@ public class Golf : MonoBehaviour
         }
         if (isTouch)
         {
+            if (touchUI) { return; }
             // Debug.Log("touch move");
             mouseReleasePos = Input.mousePosition;
             Vector3 force = mousePressDownPos - mouseReleasePos;

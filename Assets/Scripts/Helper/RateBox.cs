@@ -16,7 +16,10 @@ public class RateBox : MonoBehaviour
         {
             gameObject.SetActive(false);
             int numOff = PlayerPrefs.GetInt("RateOff", 0);
-            PlayerPrefs.SetInt("RateOff", numOff + 1);
+            if (StaticData.level == 3 && numOff == 0 || StaticData.level == 10 && numOff == 1 || StaticData.level == 15 && numOff == 2)
+            {
+                PlayerPrefs.SetInt("RateOff", numOff + 1);
+            }
             IARManager.Instance.showRate = false;
             GameController.Instance.uiController.blackScreen.gameObject.SetActive(false);
         }
@@ -33,11 +36,15 @@ public class RateBox : MonoBehaviour
                 Application.OpenURL("itms-apps://itunes.apple.com/app/id12345678");
                 Debug.Log("Iphone");
 #endif
-            Debug.Log("Not Dien thoai");
         }
         else
         {
             SendEmail();
+        }
+        int numOff = PlayerPrefs.GetInt("RateOff", 0);
+        if (StaticData.level == 3 && numOff == 0 || StaticData.level == 10 && numOff == 1 || StaticData.level == 15 && numOff == 2)
+        {
+            PlayerPrefs.SetInt("RateOff", numOff + 1);
         }
         gameObject.SetActive(false);
         GameController.Instance.uiController.blackScreen.gameObject.SetActive(false);
