@@ -46,6 +46,8 @@ public class JSONReader : MonoBehaviour
         public string xPos;
         public string xAngle;
         public string xScale;
+        public bool isRotate;
+        public string angleEnd;
     }
 
     [System.Serializable]
@@ -118,6 +120,7 @@ public class JSONReader : MonoBehaviour
             Vector3 scale = new Vector3(float.Parse(strScale[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strScale[2], CultureInfo.InvariantCulture.NumberFormat));
             obj.transform.localScale = scale;
             obj.GetComponent<ObjMap>().isMove = levelData.obj[i].isMove;
+            obj.GetComponent<ObjMap>().isRotate = levelData.obj[i].isRotate;
             obj.GetComponent<ObjMap>().isX = levelData.obj[i].isX;
             if (obj.GetComponent<ObjMap>().isX)
             {
@@ -138,6 +141,13 @@ public class JSONReader : MonoBehaviour
                 Vector3 posEnd = new Vector3(float.Parse(strPosEnd[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strPosEnd[2], CultureInfo.InvariantCulture.NumberFormat));
                 obj.GetComponent<ObjMap>().posEnd = posEnd;
                 obj.GetComponent<ObjMap>().Move();
+            }
+            if (levelData.obj[i].isRotate)
+            {
+                string[] strAngleEnd = levelData.obj[i].angleEnd.Split(char.Parse(","));
+                Vector3 angleEnd = new Vector3(float.Parse(strAngleEnd[0], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngleEnd[1], CultureInfo.InvariantCulture.NumberFormat), float.Parse(strAngleEnd[2], CultureInfo.InvariantCulture.NumberFormat));
+                obj.GetComponent<ObjMap>().angleEnd = angleEnd;
+                obj.GetComponent<ObjMap>().Rotate();
             }
         }
         GameController.Instance.CreateDone();

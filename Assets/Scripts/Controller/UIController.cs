@@ -65,5 +65,6 @@ public class UIController : MonoBehaviour
     public void ClickRelay()
     {
         SceneManager.LoadScene("GameScene");
+        // GameController.Instance.ChangeTime(1f);
     }
 }

@@ -77,7 +77,9 @@ public class GenerateJSON : MonoBehaviour
                 obj.scale = ObjectParent.GetChild(i).transform.localScale.x.ToString() + "," + ObjectParent.GetChild(i).transform.localScale.y.ToString() + "," + ObjectParent.GetChild(i).transform.localScale.z.ToString();
                 obj.id = ObjectParent.GetChild(i).GetComponent<ObjMap>().id;
                 obj.isMove = ObjectParent.GetChild(i).GetComponent<ObjMap>().isMove;
+                obj.isRotate = ObjectParent.GetChild(i).GetComponent<ObjMap>().isRotate;
                 obj.posEnd = ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().posEnd.z.ToString();
+                obj.angleEnd = ObjectParent.GetChild(i).GetComponent<ObjMap>().angleEnd.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().angleEnd.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().angleEnd.z.ToString();
                 if(ObjectParent.GetChild(i).GetComponent<ObjMap>().isX){
                     obj.isX=true;
                     obj.xPos=ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.position.x.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.position.y.ToString() + "," + ObjectParent.GetChild(i).GetComponent<ObjMap>().xMark.position.z.ToString();
@@ -143,4 +145,6 @@ public class ObjData
     public string xPos;
     public string xAngle;
     public string xScale;
+    public bool isRotate;
+    public string angleEnd;
 }
