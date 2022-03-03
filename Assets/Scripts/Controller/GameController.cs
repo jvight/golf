@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public Transform PlankParent;
     public Transform FlagParent;
     public Transform ObjParent;
+    public Transform ScorePlusParent;
     List<Plank> listPlank = new List<Plank>();
     List<Flag> listFlag = new List<Flag>();
     public Golf golf;
@@ -150,6 +151,7 @@ public class GameController : MonoBehaviour
 
     public void GameWin()
     {
+        uiController.AddScore();
         StartCoroutine(DelayFunc(() =>
         {
             uiController.GameWinEvent();
@@ -161,8 +163,8 @@ public class GameController : MonoBehaviour
                     StaticData.level = 0;
                 }
                 SceneManager.LoadScene("GameScene");
-            }, 1f));
-        }, 1f));
+            }, 2f));
+        }, 2f));
         GameDone = true;
     }
 
@@ -177,4 +179,5 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(time);
         call();
     }
+    
 }

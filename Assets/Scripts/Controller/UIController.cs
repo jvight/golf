@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UIController : MonoBehaviour
     public Transform BaseFlag;
     public Image blackScreen;
     public GameObject SettingPopup;
+    public TMP_Text scorePlusPrefab;
     void Start()
     {
         UpdateFlagFly(StaticData.level);
@@ -55,10 +57,34 @@ public class UIController : MonoBehaviour
     {
         blackScreen.gameObject.SetActive(true);
         blackScreen.DOFade(0.7f, 1);
-        textEnd.DOFade(0.7f, 1).OnComplete(() => {
-             textEnd.gameObject.SetActive(false);
+        textEnd.DOFade(0.7f, 1).OnComplete(() =>
+        {
+            textEnd.gameObject.SetActive(false);
         });
         textEnd.text = "DEFEATED";
+    }
+    public void AddScore()
+    {
+        StartCoroutine(DelayFunc(()=>{
+            for (var i = 0; i < GameController.Instance.PlankParent.childCount; i++)
+        {
+            var rd = UnityEngine.Random.Range(1f, 2f);
+
+            var scorePlus = Instantiate(scorePlusPrefab);
+            scorePlus.transform.SetParent(GameController.Instance.ScorePlusParent);
+            scorePlus.transform.position = GameController.Instance.PlankParent.GetChild(i).transform.position;
+            var seq = DOTween.Sequence()
+            .Append(scorePlus.transform.DOMoveY(GameController.Instance.PlankParent.GetChild(i).transform.position.y + 1.6f, rd))
+            .Play();
+            var seq2 = DOTween.Sequence()
+            .Append(scorePlus.DOFade(1, 1f))
+            .Append(scorePlus.DOFade(0, 1f))
+            .Play();
+
+        }
+        },0.5f));
+        
+
     }
 
     public void OnClickSetting()
@@ -92,5 +118,10 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
         // GameController.Instance.ChangeTime(1f);
+    }
+    IEnumerator DelayFunc(Action call, float time)
+    {
+        yield return new WaitForSeconds(time);
+        call();
     }
 }
