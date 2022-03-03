@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     public TMP_Text scorePlusPrefab;
     void Start()
     {
+        FindObjectOfType<IronSourceAdsController>().ShowBanner();
         UpdateFlagFly(StaticData.level);
     }
 
@@ -65,25 +66,26 @@ public class UIController : MonoBehaviour
     }
     public void AddScore()
     {
-        StartCoroutine(DelayFunc(()=>{
-            for (var i = 0; i < GameController.Instance.PlankParent.childCount; i++)
+        StartCoroutine(DelayFunc(() =>
         {
-            var rd = UnityEngine.Random.Range(1f, 2f);
+            for (var i = 0; i < GameController.Instance.PlankParent.childCount; i++)
+            {
+                var rd = UnityEngine.Random.Range(1f, 2f);
 
-            var scorePlus = Instantiate(scorePlusPrefab);
-            scorePlus.transform.SetParent(GameController.Instance.ScorePlusParent);
-            scorePlus.transform.position = GameController.Instance.PlankParent.GetChild(i).transform.position;
-            var seq = DOTween.Sequence()
-            .Append(scorePlus.transform.DOMoveY(GameController.Instance.PlankParent.GetChild(i).transform.position.y + 1.6f, rd))
-            .Play();
-            var seq2 = DOTween.Sequence()
-            .Append(scorePlus.DOFade(1, 1f))
-            .Append(scorePlus.DOFade(0, 1f))
-            .Play();
+                var scorePlus = Instantiate(scorePlusPrefab);
+                scorePlus.transform.SetParent(GameController.Instance.ScorePlusParent);
+                scorePlus.transform.position = GameController.Instance.PlankParent.GetChild(i).transform.position;
+                var seq = DOTween.Sequence()
+                .Append(scorePlus.transform.DOMoveY(GameController.Instance.PlankParent.GetChild(i).transform.position.y + 1.6f, rd))
+                .Play();
+                var seq2 = DOTween.Sequence()
+                .Append(scorePlus.DOFade(1, 1f))
+                .Append(scorePlus.DOFade(0, 1f))
+                .Play();
 
-        }
-        },0.5f));
-        
+            }
+        }, 0.5f));
+
 
     }
 
