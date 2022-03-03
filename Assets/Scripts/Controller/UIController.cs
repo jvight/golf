@@ -16,9 +16,9 @@ public class UIController : MonoBehaviour
     public Image blackScreen;
     public GameObject SettingPopup;
     public TMP_Text scorePlusPrefab;
+
     void Start()
     {
-        FindObjectOfType<IronSourceAdsController>().ShowBanner();
         UpdateFlagFly(StaticData.level);
     }
 
