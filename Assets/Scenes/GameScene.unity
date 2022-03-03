@@ -879,6 +879,7 @@ MonoBehaviour:
   BaseFlag: {fileID: 213971337}
   blackScreen: {fileID: 1301334662}
   SettingPopup: {fileID: 1589725377}
+  scorePlusPrefab: {fileID: 7065314804746522218, guid: d4d79e82be7e00e4f83aa051c15ba549, type: 3}
 --- !u!4 &129526750
 Transform:
   m_ObjectHideFlags: 0
@@ -2003,6 +2004,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560529741}
   m_CullTransparentMesh: 1
+--- !u!1 &587382001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587382002}
+  m_Layer: 0
+  m_Name: PointParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &587382002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587382001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2016434530}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589809969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,6 +5577,7 @@ MonoBehaviour:
   PlankParent: {fileID: 2051153342}
   FlagParent: {fileID: 305284600}
   ObjParent: {fileID: 1666932370}
+  ScorePlusParent: {fileID: 587382002}
   golf: {fileID: 648576598}
   AmountBall: 4
   GameDone: 0
@@ -5591,6 +5623,7 @@ MonoBehaviour:
   - {fileID: 4178810123341784466, guid: 66817b9f386397e47b1fb6566355ee00, type: 3}
   - {fileID: 5564264083842986460, guid: e97a51db81bf3ef4fb264c231fadb633, type: 3}
   - {fileID: 2543109046669738515, guid: e732ec5034f3c514b9439fa319dc4dfd, type: 3}
+  - {fileID: 3294345739672406375, guid: 59d95541d46dee14c83d6b8885a64bc1, type: 3}
   listFlag: []
   objectList:
     level: []
@@ -6916,6 +6949,7 @@ Transform:
   - {fileID: 2051153342}
   - {fileID: 305284600}
   - {fileID: 1666932370}
+  - {fileID: 587382002}
   m_Father: {fileID: 104118007}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
