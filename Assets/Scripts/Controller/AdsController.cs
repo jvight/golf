@@ -14,9 +14,9 @@ public class AdsController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            for (int i = 0; i < transform.childCount; i++)
-                if (transform.GetChild(i).GetComponent<IAdsInterface>() != null)
-                    adsController.Add(transform.GetChild(i).GetComponent<IAdsInterface>());
+            // for (int i = 0; i < transform.childCount; i++)
+            //     if (transform.GetChild(i).GetComponent<IAdsInterface>() != null)
+            //         adsController.Add(transform.GetChild(i).GetComponent<IAdsInterface>());
         }
         else
         {
