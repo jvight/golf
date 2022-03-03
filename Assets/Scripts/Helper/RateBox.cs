@@ -8,6 +8,7 @@ public class RateBox : MonoBehaviour
     public Transform baseStar;
     public Sprite sprStarOn;
     public Sprite sprStarOff;
+    public GameObject blackScreen;
     int numStar = 0;
     // Start is called before the first frame update
     public void OnClickLater()
@@ -21,7 +22,7 @@ public class RateBox : MonoBehaviour
                 PlayerPrefs.SetInt("RateOff", numOff + 1);
             }
             IARManager.Instance.showRate = false;
-            GameController.Instance.uiController.blackScreen.gameObject.SetActive(false);
+            blackScreen.SetActive(false);
         }
     }
 
@@ -47,7 +48,7 @@ public class RateBox : MonoBehaviour
             PlayerPrefs.SetInt("RateOff", numOff + 1);
         }
         gameObject.SetActive(false);
-        GameController.Instance.uiController.blackScreen.gameObject.SetActive(false);
+        blackScreen.SetActive(false);
     }
 
     void SendEmail()
