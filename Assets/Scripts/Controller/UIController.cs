@@ -14,7 +14,6 @@ public class UIController : MonoBehaviour
     public Image progressFlag;
     public Transform BaseFlag;
     public Image blackScreen;
-    public GameObject SettingPopup;
     public TMP_Text scorePlusPrefab;
 
     void Start()
@@ -89,27 +88,6 @@ public class UIController : MonoBehaviour
 
     }
 
-    public void OnClickSetting()
-    {
-        blackScreen.gameObject.SetActive(true);
-        SettingPopup.SetActive(true);
-        SettingPopup.transform.DOScale(1, 1);
-    }
-
-    public void OnClickXSetting()
-    {
-        blackScreen.gameObject.SetActive(false);
-        SettingPopup.transform.DOScale(0, 1).OnComplete(() =>
-        {
-            SettingPopup.SetActive(false);
-        });
-    }
-
-    public void OnClickRating()
-    {
-        SettingPopup.SetActive(false);
-        IARManager.Instance.ShowBox();
-    }
     // Update is called once per frame
     void Update()
     {
