@@ -162,6 +162,7 @@ public class GameController : MonoBehaviour
                 {
                     StaticData.level = 0;
                 }
+                PlayerPrefs.SetInt("Level", StaticData.level);
                 SceneManager.LoadScene("GameScene");
             }, 2f));
         }, 2f));
