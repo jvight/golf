@@ -126,13 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d64a6dcaa3823f468ef2e4fc5e3b2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorBase: {r: 1, g: 1, b: 1, a: 0}
+  colorBase: {r: 1, g: 0.2784314, b: 0.2509804, a: 0}
   listColorChange:
-  - {r: 1, g: 0.49019608, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0.043137256, a: 0}
+  - {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0}
+  - {r: 0.23921569, g: 0.23921569, b: 0.23921569, a: 0}
   isRed: 1
   poured: 0
-  xMark: {fileID: 3021310217492337838}
+  xMark: {fileID: 0}
   originColor: {r: 0.18039216, g: 0.16470589, b: 0.16470589, a: 0}
   xMarkColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1001 &2678709888392014335
@@ -212,11 +212,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b7e928eec0bf0648a3349b575af10ab, type: 3}
---- !u!1 &3021310217492337838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b7e928eec0bf0648a3349b575af10ab, type: 3}
-  m_PrefabInstance: {fileID: 2678709888392014335}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2496692999280643604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b7e928eec0bf0648a3349b575af10ab, type: 3}
