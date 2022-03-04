@@ -17,16 +17,22 @@ public class Character : MonoBehaviour
 
     public void Hit()
     {
-        anim.SetBool("IsDrive", true);
-        StartCoroutine(DelayFunc(() =>
-        {
-            anim.SetBool("IsDrive", false);
-        }, 4f));
+        anim.SetTrigger("Swing");
+        // anim.SetBool("IsDrive", true);
+        // StartCoroutine(DelayFunc(() =>
+        // {
+        //     // anim.SetBool("IsDrive", false);
+        // }, 4f));
+    }
+
+    public void Veldle() {
+        anim.SetTrigger("Veldle");
     }
 
     public void Idle()
     {
-        anim.SetBool("IsDrive", false);
+         anim.SetTrigger("Idle");
+        // anim.SetBool("IsDrive", false);
     }
 
     public void SetTimeAnim(float time)
@@ -38,4 +44,5 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(time);
         call();
     }
+
 }

@@ -9,7 +9,7 @@ public class RateBox : MonoBehaviour
     public Sprite sprStarOn;
     public Sprite sprStarOff;
     public GameObject blackScreen;
-    int numStar = 0;
+    public int numStar = 0;
     // Start is called before the first frame update
     public void OnClickLater()
     {

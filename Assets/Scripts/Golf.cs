@@ -126,7 +126,7 @@ public class Golf : MonoBehaviour
         {
             GameController.Instance.PlayGolf();
             rb.AddForce(new Vector3(Force.x, Math.Abs(Force.y + 200), Math.Abs(Force.y + 100)) * forceMultiplier);
-        }, 0.9f * Time.timeScale));
+        }, 1.2f * Time.timeScale));
         isShoot = true;
     }
 

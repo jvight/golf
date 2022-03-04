@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class HomeController : MonoBehaviour
 {
-    public Image progress;
     public Image blackScreen;
     public GameObject SettingPopup;
+    public TMP_Text textLevel;
     void Start()
     {
         FindObjectOfType<IronSourceAdsController>().ShowBanner();
@@ -17,6 +18,7 @@ public class HomeController : MonoBehaviour
         // {
         //     SceneManager.LoadScene("GameScene");
         // });
+        textLevel.text = "Level " + (PlayerPrefs.GetInt("Level", 0) + 1).ToString();
     }
 
     public void OnClickRating()
@@ -39,6 +41,11 @@ public class HomeController : MonoBehaviour
         {
             SettingPopup.SetActive(false);
         });
+    }
+
+    public void ClickStart()
+    {
+        SceneManager.LoadScene("LoadScene");
     }
 
     // Update is called once per frame

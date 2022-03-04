@@ -19,13 +19,15 @@ public class GameController : MonoBehaviour
     public int AmountBall = 4;
     public bool GameDone = false;
     public JSONReader jsonReader;
+    int coin = 0;
     void Awake()
     {
         Instance = this;
         // GameAnalytics.Initialize();
     }
     void Start()
-    {
+    {   
+        coin = PlayerPrefs.GetInt("Coin", 0);
         int numOff = PlayerPrefs.GetInt("RateOff", 0);
         Debug.Log(numOff);
         if (StaticData.level == 3 && numOff == 0 || StaticData.level == 10 && numOff == 1 || StaticData.level == 15 && numOff == 2)
@@ -66,7 +68,11 @@ public class GameController : MonoBehaviour
             character.Idle();
             // Time.timeScale = 1;
             ChangeTime(1);
-            golf.ReBack();
+            if (AmountBall > 0)
+            {
+                golf.ReBack();
+                character.Veldle();
+            }
             CheckEnd();
         }, 2f));
     }
@@ -137,7 +143,7 @@ public class GameController : MonoBehaviour
                 flagFly++;
             }
         });
-        uiController.UpdateFlagFly(flagFly);
+        // uiController.UpdateFlagFly(flagFly);
     }
 
     public void GameLose()
@@ -162,6 +168,7 @@ public class GameController : MonoBehaviour
                 {
                     StaticData.level = 0;
                 }
+                PlayerPrefs.SetInt("Level", StaticData.level);
                 SceneManager.LoadScene("GameScene");
             }, 2f));
         }, 2f));
@@ -179,5 +186,5 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(time);
         call();
     }
-    
+
 }
