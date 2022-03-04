@@ -21,6 +21,7 @@ public class IARManager : MonoBehaviour
 
     public void ShowBox()
     {
+        rateBox.numStar = 0;
         rateBox.gameObject.SetActive(true);
         showRate = true;
     }

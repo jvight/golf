@@ -15,10 +15,17 @@ public class UIController : MonoBehaviour
     public Transform BaseFlag;
     public Image blackScreen;
     public TMP_Text scorePlusPrefab;
+    public TMP_Text textCoin;
+    public TMP_Text textLevel;
 
     void Start()
     {
+        textLevel.text = "Level " + (StaticData.level + 1).ToString();
         UpdateFlagFly(StaticData.level);
+    }
+
+    public void UpdateTextCoin(int coin) {
+        textCoin.text = coin.ToString();
     }
 
     public void SetAmountBall(int amount)
