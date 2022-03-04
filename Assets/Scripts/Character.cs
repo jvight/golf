@@ -25,8 +25,13 @@ public class Character : MonoBehaviour
         // }, 4f));
     }
 
+    public void Veldle() {
+        anim.SetTrigger("Veldle");
+    }
+
     public void Idle()
     {
+         anim.SetTrigger("Idle");
         // anim.SetBool("IsDrive", false);
     }
 

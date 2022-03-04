@@ -66,7 +66,11 @@ public class GameController : MonoBehaviour
             character.Idle();
             // Time.timeScale = 1;
             ChangeTime(1);
-            golf.ReBack();
+            if (AmountBall > 0)
+            {
+                golf.ReBack();
+                character.Veldle();
+            }
             CheckEnd();
         }, 2f));
     }
@@ -180,5 +184,5 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(time);
         call();
     }
-    
+
 }

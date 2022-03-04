@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -5252816984213320552
     second: idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 92d9b02b930c4d84ea02389556b740e7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
