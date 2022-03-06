@@ -45,6 +45,7 @@ public class HomeController : MonoBehaviour
 
     public void ClickStart()
     {
+        // UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.SFX_01);
         SceneManager.LoadScene("LoadScene");
     }
 
