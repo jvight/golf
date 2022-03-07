@@ -13,6 +13,7 @@ public class HomeController : MonoBehaviour
     public TMP_Text textLevel;
     void Start()
     {
+        UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.BGM);
         FindObjectOfType<IronSourceAdsController>().ShowBanner();
         // progress.DOFillAmount(1f, 1f).OnComplete(() =>
         // {
@@ -45,7 +46,7 @@ public class HomeController : MonoBehaviour
 
     public void ClickStart()
     {
-        // UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.SFX_01);
+        // UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.BGM);
         SceneManager.LoadScene("LoadScene");
     }
 
