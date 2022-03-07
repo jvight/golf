@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-        // UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.ST_01, false, 0, 1);
+        // UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.BGM, false, 0, 1);
         coin = PlayerPrefs.GetInt("Coin", 0);
         int numOff = PlayerPrefs.GetInt("RateOff", 0);
         Debug.Log(numOff);
