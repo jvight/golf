@@ -1586,7 +1586,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 835799566}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 890511973}
+        m_TargetAssemblyTypeName: HomeController, Assembly-CSharp
+        m_MethodName: OnClickMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &835799566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1830,6 +1842,7 @@ MonoBehaviour:
   blackScreen: {fileID: 1491004605}
   SettingPopup: {fileID: 216806899}
   textLevel: {fileID: 282097289}
+  ShopPopup: {fileID: 880236009}
 --- !u!4 &890511974
 Transform:
   m_ObjectHideFlags: 0

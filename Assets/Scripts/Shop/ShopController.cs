@@ -10,10 +10,6 @@ public class ShopController : MonoBehaviour
         
     }
 
-    public void OnClickMenu() {
-        gameObject.SetActive(false);
-    }
-
     // Update is called once per frame
     void Update()
     {

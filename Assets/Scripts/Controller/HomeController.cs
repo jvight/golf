@@ -11,6 +11,7 @@ public class HomeController : MonoBehaviour
     public Image blackScreen;
     public GameObject SettingPopup;
     public TMP_Text textLevel;
+    public GameObject ShopPopup;
     void Start()
     {
         FindObjectOfType<IronSourceAdsController>().ShowBanner();
@@ -47,6 +48,16 @@ public class HomeController : MonoBehaviour
     {
         // UnityCore.Audio.AudioController.instance.PlayAudio(UnityCore.Audio.AudioType.SFX_01);
         SceneManager.LoadScene("LoadScene");
+    }
+
+    public void ClickShop()
+    {
+        ShopPopup.SetActive(true);
+    }
+
+    public void OnClickMenu()
+    {
+        ShopPopup.SetActive(false);
     }
 
     // Update is called once per frame
